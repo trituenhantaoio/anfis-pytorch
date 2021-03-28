@@ -1,88 +1,71 @@
 # ANFIS in pyTorch #
 
 
-This is an implementation of the ANFIS system using pyTorch.
+Đây là cài đặt của hệ ANFIS sử dụng pyTorch.
 
 
 ### ANFIS
 
-ANFIS is a way of presenting a fuzzy inference system (FIS) as a
-series of numeric layers so that it can be trained like a neural net.
+ANFIS là cách biểu diễn hệ logic mờ (FIS) như một chuối
+các tầng số để có thể huấn luyện như một mạng nơ ron.
 
-The canonical reference is the original paper by
+Bài báo gốc có thể xem tại
 [Jyh-Shing Roger Jang](http://mirlab.org/jang/):
 
 * Jang, J.-S.R. (1993). "ANFIS: adaptive-network-based fuzzy inference
   system". IEEE Transactions on Systems, Man and Cybernetics. 23 (3):
   665–685. doi:10.1109/21.256541
 
-Note that it assumes a Takagi Sugeno Kang (TSK) style of
-defuzzification rather than the more usual Mamdani style.
+Chú ý rằng, nó dựa trên Giải mờ theo phong cách Takagi Sugeno Kang (TSK) hơn là Mamdani.
 
 
-### Background: other implementations
+### Các cài đặt khác
 
-The original C code from Jang that implements the ANFIS system, along
-with is test cases, is available from
-[a repository at CMU](https://www.cs.cmu.edu/Groups/AI/areas/fuzzy/systems/anfis/).
+Code C gốc của Jang cài đặt hệ ANFIS cùng với test case được lưu trữ
+[tại đây](https://www.cs.cmu.edu/Groups/AI/areas/fuzzy/systems/anfis/).
 
-The version most people seem to use is the
+Phiên bản nhiều người sử dụng là
 [ANFIS library for Matlab](https://www.mathworks.com/help/fuzzy/anfis.html).
-Their [documentation](https://www.mathworks.com/help/fuzzy/neuro-adaptive-learning-and-anfis.html) is quite helpful for understanding how ANFIS works,
-even if you don't use Matlab.
+[Tài liệu của họ](https://www.mathworks.com/help/fuzzy/neuro-adaptive-learning-and-anfis.html) khá hữu ích để hiểu cách ANFIS hoạt động, dù có dùng Matlab hay không.
 
-There's an implementation for the R language by Cristobal Fresno and Elmer
-A. Fernandez of the
-[BioScience Data Mining Group](http://www.bdmg.com.ar/?page_id=176)
-in Argentina (that URL seems a bit unstable).
-Again, their documentation is very helpful, particularly
-the "ANFIS vignette" report that comes with the distribution (I've put a
-[local copy](./Anfis-vignette.pdf) here).  It
-shows how to run the system using examples from Jang's paper, and gives
-some of the results.
+Một cài đặt khác sử dụng R của Cristobal Fresno và Elmer
+A. [BioScience Data Mining Group](http://www.bdmg.com.ar/?page_id=176) tại Argentina
+Tài liệu của họ cũng rất hữu ích
+[xem](./Anfis-vignette.pdf) here).  Nó chứa các ví dụ từ bài báo của Jang.
 
-I also found a re-implementation of this R code in Python 
-[anfis](https://github.com/twmeggs/anfis) by Tim Meggs that was helpful
-in understanding the original R code.
+Một bản cài đặt khác bằng Python mang tên [anfis](https://github.com/twmeggs/anfis) bởi Tim Meggs.
 
 
-### Navigation
+### Điều hướng
 
-The ANFIS framework is mainly in three files:
+ANFIS framework chứa 3 file chính:
 
-* [anfis.py](./anfis.py) This is where the layers of the ANFIS system
-  are defined as Torch modules.
+* [anfis.py](./anfis.py) Định nghĩa các lớp của ANFIS dưới dạng Torch module.
 
-* [membership.py](./membership.py) At the moment I only have Bell and
-  Gaussian membership functions, but any others will go in here too.
+* [membership.py](./membership.py) Hiện tại mới có hàm thành viên Bell và
+  Gaussian, các hàm khác sẽ được bổ sung vào đây.
 
-* [experimental.py](./experimental.py) The experimental infrastructure
-  to train and test the FIS, and to plot some graphs etc.
+* [experimental.py](./experimental.py) Ví dụ để huấn luyện và kiểm thử FIS với các đồ thị thể hiện kết quả.
 
 
-There are then some runnable examples:
+Các ví dụ có thể chạy được:
 
-* [jang_examples.py](./jang_examples.py) these are four
-  examples from Jang's paper (based partly on the details in the
-  paper, and particle on the example folders in his source code
-  distribution).
+* [jang_examples.py](./jang_examples.py) chứa 4 ví dụ từ bài báo của Jang
 
-* [vignette_examples.py](./vignette_examples.py) these are
-  three examples from the Vignette paper.  Two of these use Gaussians
-  rather than Bell MFs.
+* [vignette_examples.py](./vignette_examples.py) chứa 3 ví dụ từ bài báo Vignette
 
 
 
-### Installation
+### Cài đặt
 
-You need to install Python and PyTorch, nothing special.
+Cần có Python và PyTorch.
 
-I'm using
-[Python 3.6.5](https://www.python.org/downloads/),
-the [Anaconda 4.6.11](https://www.anaconda.com/distribution/) distribution
-and [PyTorch](https://pytorch.org) version 1.0.1.
+Phiên bản của tác giả
+[Python 3.6.5](https://www.python.org/downloads/)
+[Anaconda 4.6.11](https://www.anaconda.com/distribution/)
+[PyTorch](https://pytorch.org) phiên bản 1.0.1
 
 
-### Author ###
+### Tác giả ###
 
 * [James Power](http://www.cs.nuim.ie/~jpower/), Maynooth University.
